@@ -20,6 +20,7 @@ stock_parameters = {
 }
 news_parameters = {
     "q": COMPANY_NAME,
+    "searchIn": "title",
     "sortBy": "publishedAt",
     "language": "en",
     "apiKey": NEWS_API_KEY
