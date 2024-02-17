@@ -34,14 +34,14 @@ stock_data = stock_response.json()["Time Series (Daily)"]
 # To account for timezone differences of Singapore (my location) vs the East
 # as well as since current day stock data would not have been updated yet:
 days_before_present = 0
-today_data = None
+data_for_today = None
 
-# If there is no stock data for today's date, this while loop continues until it can find the latest data for the stock:
-while today_data is None:
+# If there is no stock data for today, this while loop continues until it can find the latest data for the stock:
+while data_for_today is None:
     today_date = str(datetime.now() - timedelta(days_before_present)).split(" ")[0]
     yesterday_date = str(datetime.now() - timedelta(days_before_present + 1)).split(" ")[0]
-    today_data = stock_data.get(today_date)
-    yesterday_data = stock_data.get(yesterday_date)
+    data_for_today = stock_data.get(today_date)
+    data_for_yesterday = stock_data.get(yesterday_date)
 
     days_before_present += 1
 
